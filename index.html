@@ -74,24 +74,27 @@
   </main>
 
   <script>
-    // Format today's date as dd-mm-yyyy
+    // Initialize date input to today
+    const dateInput = document.getElementById("attendance-date");
     const today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
     const yyyy = today.getFullYear();
-    document.getElementById("attendance-date").value = `${yyyy}-${mm}-${dd}`; // for input type=date
-    document.getElementById("attendance-date").setAttribute("data-display", `${dd}-${mm}-${yyyy}`);
-
+    dateInput.value = `${yyyy}-${mm}-${dd}`;
+  
     // Handle form submission
-    document.getElementById("attendance-form").addEventListener("submit", e => {
-      e.preventDefault();
-      alert("Attendance submitted ✅");
-      // TODO: Save to Firestore
-    });
-
-    // Later: fetch attendance records from Firestore and compute counts
+    document
+      .getElementById("attendance-form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Attendance submitted ✅");
+        // TODO: Save to Firestore
+      });
+  
+    // Placeholder summary values
     document.getElementById("present-count").textContent = "12";
     document.getElementById("absent-count").textContent = "3";
   </script>
+
 </body>
 </html>
