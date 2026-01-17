@@ -2,127 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Employee Attendance Tracker</title>
+  <title>Employee Attendance</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <div class="header-inner">
-      <div class="header-title">Attendance <span>Tracker</span></div>
-      <input type="date" id="attendance-date">
-      <button class="logout-btn">Logout</button>
+      <div class="header-title">Employee <span>Attendance</span></div>
+      <input type="date" id="attendance-date" value="">
     </div>
   </header>
 
-  <div class="subheader">
-    Track daily <span>employee attendance</span> with ease
-  </div>
-
   <main class="container">
-    <!-- Summary Cards -->
+    <!-- Attendance Form -->
     <div class="card">
       <div class="card-header-line">
-        <div class="emoji-badge">✅</div>
-        <span class="card-pill">Present</span>
+        <div class="emoji-badge">📝</div>
+        <span class="card-pill">Mark Attendance</span>
       </div>
-      <h2>45 Employees</h2>
-      <p>Marked present today</p>
+      <form id="attendance-form">
+        <label>Status:</label>
+        <select id="status">
+          <option>Present</option>
+          <option>Absent</option>
+          <option>Late</option>
+          <option>On Leave</option>
+        </select>
+
+        <label>Notes (optional):</label>
+        <textarea id="notes" rows="3" placeholder="Reason if absent/late..."></textarea>
+
+        <button type="submit" class="logout-btn">Submit</button>
+      </form>
     </div>
 
+    <!-- History Table -->
     <div class="card">
-      <div class="card-header-line">
-        <div class="emoji-badge">❌</div>
-        <span class="card-pill card-pill--master">Absent</span>
-      </div>
-      <h2>5 Employees</h2>
-      <p>Did not attend</p>
-    </div>
-
-    <div class="card">
-      <div class="card-header-line">
-        <div class="emoji-badge">⚠️</div>
-        <span class="card-pill card-pill--utility">Late</span>
-      </div>
-      <h2>3 Employees</h2>
-      <p>Arrived late</p>
-    </div>
-
-    <!-- Attendance Table -->
-    <div class="card">
-      <h2>Attendance Records</h2>
+      <h2>My Attendance History</h2>
       <table>
         <thead>
           <tr>
-            <th>ID</th><th>Name</th><th>Department</th><th>Status</th>
+            <th>Date</th><th>Status</th><th>Notes</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>EMP001</td><td>John Doe</td><td>Engineering</td>
-            <td>
-              <select>
-                <option>Present</option>
-                <option>Absent</option>
-                <option>Late</option>
-                <option>On Leave</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>EMP002</td><td>Jane Smith</td><td>HR</td>
-            <td>
-              <select>
-                <option>Present</option>
-                <option>Absent</option>
-                <option>Late</option>
-                <option>On Leave</option>
-              </select>
-            </td>
-          </tr>
+        <tbody id="history">
+          <!-- Example rows -->
+          <tr><td>2026-01-16</td><td>Present</td><td>-</td></tr>
+          <tr><td>2026-01-15</td><td>Late</td><td>Traffic jam</td></tr>
         </tbody>
       </table>
     </div>
   </main>
 
   <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const table = document.querySelector("table tbody");
-  const summary = {
-    present: document.querySelector(".card:nth-child(1) h2"),
-    absent: document.querySelector(".card:nth-child(2) h2"),
-    late: document.querySelector(".card:nth-child(3) h2"),
-    leave: null // optional if you add a leave card
-  };
+    // Auto-fill today's date
+    document.getElementById("attendance-date").value = new Date().toISOString().split("T")[0];
 
-  function updateSummary() {
-    let counts = { present: 0, absent: 0, late: 0, leave: 0 };
-
-    table.querySelectorAll("select").forEach(select => {
-      switch (select.value) {
-        case "Present": counts.present++; break;
-        case "Absent": counts.absent++; break;
-        case "Late": counts.late++; break;
-        case "On Leave": counts.leave++; break;
-      }
+    // Handle form submission (later → Firebase)
+    document.getElementById("attendance-form").addEventListener("submit", e => {
+      e.preventDefault();
+      alert("Attendance submitted ✅");
+      // TODO: Save to Firestore
     });
-
-    summary.present.textContent = `${counts.present} Employees`;
-    summary.absent.textContent = `${counts.absent} Employees`;
-    summary.late.textContent = `${counts.late} Employees`;
-    if (summary.leave) summary.leave.textContent = `${counts.leave} Employees`;
-  }
-
-  // Initial load
-  updateSummary();
-
-  // Listen for changes
-  table.addEventListener("change", e => {
-    if (e.target.tagName === "SELECT") {
-      updateSummary();
-    }
-  });
-});
-</script>
-
+  </script>
 </body>
 </html>
