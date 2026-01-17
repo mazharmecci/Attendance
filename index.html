@@ -20,21 +20,29 @@
         <span class="card-pill">Mark Attendance</span>
       </div>
       <form id="attendance-form">
-        <label>Date:</label>
-        <input type="date" id="attendance-date">
-
-        <label>Status:</label>
-        <select id="status">
-          <option>Present</option>
-          <option>Absent</option>
-          <option>Late</option>
-          <option>On Leave</option>
-        </select>
-
-        <label>Reason (optional):</label>
-        <textarea id="notes" rows="4" placeholder="Reason if absent/late..."></textarea>
-
-        <button type="submit" class="submit-btn">Submit</button>
+        <div class="form-row">
+          <label>Date:</label>
+          <input type="date" id="attendance-date">
+        </div>
+    
+        <div class="form-row">
+          <label>Status:</label>
+          <select id="status">
+            <option>Present</option>
+            <option>Absent</option>
+            <option>Late</option>
+            <option>On Leave</option>
+          </select>
+        </div>
+    
+        <div class="form-row">
+          <label>Reason (optional):</label>
+          <textarea id="notes" rows="4" placeholder="Reason if absent/late..."></textarea>
+        </div>
+    
+        <div class="form-row">
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
       </form>
     </div>
 
