@@ -83,5 +83,46 @@
       </table>
     </div>
   </main>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const table = document.querySelector("table tbody");
+  const summary = {
+    present: document.querySelector(".card:nth-child(1) h2"),
+    absent: document.querySelector(".card:nth-child(2) h2"),
+    late: document.querySelector(".card:nth-child(3) h2"),
+    leave: null // optional if you add a leave card
+  };
+
+  function updateSummary() {
+    let counts = { present: 0, absent: 0, late: 0, leave: 0 };
+
+    table.querySelectorAll("select").forEach(select => {
+      switch (select.value) {
+        case "Present": counts.present++; break;
+        case "Absent": counts.absent++; break;
+        case "Late": counts.late++; break;
+        case "On Leave": counts.leave++; break;
+      }
+    });
+
+    summary.present.textContent = `${counts.present} Employees`;
+    summary.absent.textContent = `${counts.absent} Employees`;
+    summary.late.textContent = `${counts.late} Employees`;
+    if (summary.leave) summary.leave.textContent = `${counts.leave} Employees`;
+  }
+
+  // Initial load
+  updateSummary();
+
+  // Listen for changes
+  table.addEventListener("change", e => {
+    if (e.target.tagName === "SELECT") {
+      updateSummary();
+    }
+  });
+});
+</script>
+
 </body>
 </html>
