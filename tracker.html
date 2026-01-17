@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Attendance Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Attendance Tracker</h1>
+    <input type="date" id="attendance-date">
+    <div class="profile">👤</div>
+  </header>
+
+  <main>
+    <section class="summary">
+      <div>✅ Present: 0</div>
+      <div>❌ Absent: 0</div>
+      <div>⚠️ Late: 0</div>
+    </section>
+
+    <section class="filters">
+      <input type="text" placeholder="Search employee...">
+      <select>
+        <option>All Departments</option>
+        <option>HR</option>
+        <option>Engineering</option>
+        <option>Sales</option>
+      </select>
+    </section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th><th>Name</th><th>Department</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>EMP001</td><td>John Doe</td><td>Engineering</td>
+          <td>
+            <select>
+              <option>Present</option>
+              <option>Absent</option>
+              <option>Late</option>
+              <option>On Leave</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
