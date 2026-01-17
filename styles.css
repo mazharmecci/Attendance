@@ -1,10 +1,12 @@
 :root {
+  /* Swapped roles */
   --bg-gradient: radial-gradient(circle at top, #1f2937 0, #718bc1 50%, #718bc1 100%);
   --primary: #3b82f6;
   --primary-soft: rgba(59, 130, 246, 0.16);
   --accent: #22c1c3;
   --accent-soft: rgba(34, 193, 195, 0.16);
-  --card-bg: rgba(15, 23, 42, 0.96);
+  --card-bg: var(--bg-gradient); /* Cards now use gradient */
+  --page-bg: rgba(15, 23, 42, 0.96); /* Page background is the old card color */
   --card-border: 1px solid rgba(148, 163, 184, 0.28);
   --text-main: #e5e7eb;
   --text-muted: #9ca3af;
@@ -14,7 +16,7 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg-gradient);
+  background: var(--page-bg); /* Dark solid background */
   background-attachment: fixed;
   margin: 0;
   padding: 0;
@@ -64,12 +66,14 @@ header {
   padding: 0 2rem;
 }
 
+/* Cards now pop with gradient */
 .card {
   background: var(--card-bg);
-  border: var(--card-border);
   border-radius: var(--radius-lg);
+  border: var(--card-border);
   box-shadow: var(--shadow-soft);
   padding: 1.5rem;
+  color: #f9fafb; /* Ensure text is readable on gradient */
   transition: all 0.2s ease-out;
 }
 
