@@ -1,22 +1,22 @@
 :root {
-  /* Swapped roles */
-  --bg-gradient: radial-gradient(circle at top, #1f2937 0, #718bc1 50%, #718bc1 100%);
-  --primary: #3b82f6;
-  --primary-soft: rgba(59, 130, 246, 0.16);
-  --accent: #22c1c3;
-  --accent-soft: rgba(34, 193, 195, 0.16);
-  --card-bg: var(--bg-gradient); /* Cards now use gradient */
-  --page-bg: rgba(15, 23, 42, 0.96); /* Page background is the old card color */
-  --card-border: 1px solid rgba(148, 163, 184, 0.28);
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
+  /* Softer palette */
+  --bg-gradient: radial-gradient(circle at top, #eef2ff 0, #e0f2fe 50%, #e0f2fe 100%);
+  --primary: #2563eb;                       /* Softer blue */
+  --primary-soft: rgba(37, 99, 235, 0.12);
+  --accent: #0ea5e9;                        /* Light cyan */
+  --accent-soft: rgba(14, 165, 233, 0.12);
+  --card-bg: #f9fafb;                       /* Light card */
+  --page-bg: #e5e7eb;                       /* Soft grey background */
+  --card-border: 1px solid rgba(148, 163, 184, 0.3);
+  --text-main: #111827;
+  --text-muted: #6b7280;
   --radius-lg: 16px;
-  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.65);
+  --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.12);
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: var(--page-bg); /* Dark solid background */
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--page-bg);
   background-attachment: fixed;
   margin: 0;
   padding: 0;
@@ -30,10 +30,14 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: linear-gradient(90deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.97));
-  border-bottom: 1px solid rgba(148, 163, 184, 0.28);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(20px);
+  background: linear-gradient(
+    90deg,
+    rgba(248, 250, 252, 0.95),
+    rgba(239, 246, 255, 0.97)
+  );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
 }
 
 .header-inner {
@@ -42,45 +46,46 @@ header {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
 }
 
 .header-title {
   font-size: 1.3rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #f9fafb;
+  color: #0f172a;
 }
 
 .header-title span {
   color: var(--accent);
 }
 
-/* Summary Cards */
+/* Layout */
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
+  margin: 1.75rem auto 2rem;
+  padding: 0 1.5rem;
 }
 
-/* Cards now pop with gradient */
+/* Cards */
 .card {
   background: var(--card-bg);
   border-radius: var(--radius-lg);
   border: var(--card-border);
   box-shadow: var(--shadow-soft);
   padding: 1.5rem;
-  color: #f9fafb; /* Ensure text is readable on gradient */
-  transition: all 0.2s ease-out;
+  color: var(--text-main);
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85);
-  border-color: rgba(129, 140, 248, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.14);
+  border-color: rgba(59, 130, 246, 0.55);
 }
 
 .card-header-line {
