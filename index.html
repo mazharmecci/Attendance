@@ -61,6 +61,16 @@
         </tbody>
       </table>
     </div>
+
+    <div class="card">
+      <div class="card-header-line">
+        <div class="emoji-badge">📈</div>
+        <span class="card-pill card-pill--master">Monthly Summary</span>
+      </div>
+      <h2>January 2026</h2>
+      <p>✅ Present: <strong id="present-count">12</strong> days</p>
+      <p>❌ Absent: <strong id="absent-count">3</strong> days</p>
+    </div>
   </main>
 
   <script>
@@ -78,6 +88,10 @@
       alert("Attendance submitted ✅");
       // TODO: Save to Firestore
     });
+
+    // Later: fetch attendance records from Firestore and compute counts
+    document.getElementById("present-count").textContent = "12";
+    document.getElementById("absent-count").textContent = "3";
   </script>
 </body>
 </html>
