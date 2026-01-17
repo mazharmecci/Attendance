@@ -9,18 +9,20 @@
   <header>
     <div class="header-inner">
       <div class="header-title">Employee <span>Attendance</span></div>
-      <input type="date" id="attendance-date" value="">
     </div>
   </header>
 
   <main class="container">
-    <!-- Attendance Form -->
+    <!-- Attendance Form Card -->
     <div class="card">
       <div class="card-header-line">
-        <div class="emoji-badge">📝</div>
+        <div class="emoji-badge">📅</div>
         <span class="card-pill">Mark Attendance</span>
       </div>
       <form id="attendance-form">
+        <label>Date:</label>
+        <input type="date" id="attendance-date">
+
         <label>Status:</label>
         <select id="status">
           <option>Present</option>
@@ -29,10 +31,10 @@
           <option>On Leave</option>
         </select>
 
-        <label>Notes (optional):</label>
-        <textarea id="notes" rows="3" placeholder="Reason if absent/late..."></textarea>
+        <label>Reason (optional):</label>
+        <textarea id="notes" rows="4" placeholder="Reason if absent/late..."></textarea>
 
-        <button type="submit" class="logout-btn">Submit</button>
+        <button type="submit" class="submit-btn">Submit</button>
       </form>
     </div>
 
@@ -46,19 +48,23 @@
           </tr>
         </thead>
         <tbody id="history">
-          <!-- Example rows -->
-          <tr><td>2026-01-16</td><td>Present</td><td>-</td></tr>
-          <tr><td>2026-01-15</td><td>Late</td><td>Traffic jam</td></tr>
+          <tr><td>16-01-2026</td><td>Present</td><td>-</td></tr>
+          <tr><td>15-01-2026</td><td>Late</td><td>Traffic jam</td></tr>
         </tbody>
       </table>
     </div>
   </main>
 
   <script>
-    // Auto-fill today's date
-    document.getElementById("attendance-date").value = new Date().toISOString().split("T")[0];
+    // Format today's date as dd-mm-yyyy
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    document.getElementById("attendance-date").value = `${yyyy}-${mm}-${dd}`; // for input type=date
+    document.getElementById("attendance-date").setAttribute("data-display", `${dd}-${mm}-${yyyy}`);
 
-    // Handle form submission (later → Firebase)
+    // Handle form submission
     document.getElementById("attendance-form").addEventListener("submit", e => {
       e.preventDefault();
       alert("Attendance submitted ✅");
