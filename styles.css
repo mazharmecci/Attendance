@@ -145,7 +145,13 @@ tr:hover {
   background: rgba(34, 193, 195, 0.08);
 }
 
-/* Wider textarea */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
 form textarea {
   width: 100%;
   min-height: 120px;
@@ -157,7 +163,6 @@ form textarea {
   font-size: 0.95rem;
 }
 
-/* Mango gold button */
 .submit-btn {
   background: #FFC324;
   color: #1f2937;
@@ -167,6 +172,7 @@ form textarea {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-out;
+  width: fit-content;
 }
 
 .submit-btn:hover {
@@ -174,3 +180,4 @@ form textarea {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(255, 195, 36, 0.45);
 }
+
